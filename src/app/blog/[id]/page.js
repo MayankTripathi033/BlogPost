@@ -72,12 +72,28 @@ export default function BlogPost({ params }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
-          <p className="text-gray-600">Loading post...</p>
+        <div className="min-h-screen flex items-center justify-center bg-gray-50">
+          <div className="text-center space-y-6">
+            <div className="relative">
+              {/* Animated book icon */}
+              <div className="w-24 h-24 mx-auto relative">
+                <div className="absolute inset-0 border-4 border-blue-500 rounded-lg transform rotate-12 animate-pulse"></div>
+                <div className="absolute inset-0 border-4 border-blue-400 rounded-lg transform -rotate-12 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                <div className="absolute inset-0 border-4 border-blue-300 rounded-lg animate-pulse" style={{ animationDelay: '1s' }}></div>
+              </div>
+              {/* Animated dots */}
+              <div className="flex justify-center space-x-2 mt-6">
+                <div className="w-3 h-3 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
+                <div className="w-3 h-3 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-3 h-3 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+              </div>
+            </div>
+            <div className="space-y-2">
+              <h2 className="text-2xl font-semibold text-gray-800">Loading Stories</h2>
+              <p className="text-gray-600 animate-pulse">Crafting your reading experience...</p>
+            </div>
+          </div>
         </div>
-      </div>
     );
   }
 
