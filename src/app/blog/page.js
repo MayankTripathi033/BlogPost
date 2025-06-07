@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-
 export default function BlogList() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,37 +17,56 @@ export default function BlogList() {
   };
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchPosts = async () => {
+      if (!isMounted) return;
+      
       try {
+        console.log('Starting to fetch posts...');
         setLoading(true);
         setError(null);
-        console.log('Fetching posts...');
+        
         const response = await fetch('/api/posts');
+        console.log('Response received:', response.status);
 
         if (!response.ok) {
           throw new Error('Failed to fetch posts');
         }
 
         const data = await response.json();
-        console.log('Fetched posts:', data);
-        setPosts(data);
+        console.log('Data received:', data.length, 'posts');
+        
+        if (isMounted) {
+          setPosts(data);
+          setLoading(false);
+        }
       } catch (error) {
         console.error('Error fetching posts:', error);
-        setError(error.message);
+        if (isMounted) {
+          setError(error.message);
+          setLoading(false);
+        }
       } finally {
-        setLoading(false);
-        setMounted(true);
+        if (isMounted) {
+          setMounted(true);
+        }
       }
     };
 
     fetchPosts();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
+
 
   if (!mounted) {
     return null;
   }
 
-  if (loading) {
+  if (loading) {    
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center space-y-6">

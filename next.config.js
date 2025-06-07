@@ -1,15 +1,33 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      'pngtree.com',
-      'images.unsplash.com',
-      'picsum.photos',
-      'source.unsplash.com',
-      'via.placeholder.com',
-      'res.cloudinary.com'
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'pngtree.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+      },
+      {
+        protocol: 'https',
+        hostname: 'source.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
     ],
   },
 }
 
-module.exports = nextConfig 
+export default nextConfig 
