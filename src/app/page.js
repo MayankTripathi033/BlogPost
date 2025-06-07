@@ -3,26 +3,6 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <main className="container mx-auto px-4 py-8">
-      <nav className="mb-12">
-        <ul className="flex gap-6">
-          <li>
-            <Link href="/" className="text-blue-600 hover:underline">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href="/blog" className="text-blue-600 hover:underline">
-              Blog
-            </Link>
-          </li>
-          <li>
-            <Link href="/about" className="text-blue-600 hover:underline">
-              About
-            </Link>
-          </li>
-        </ul>
-      </nav>
-
       <section className="max-w-4xl mx-auto">
         <h1 className="text-5xl font-bold mb-6">Welcome to Our Blog</h1>
         <p className="text-xl text-gray-600 mb-8">
