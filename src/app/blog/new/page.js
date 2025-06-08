@@ -26,7 +26,8 @@ export default function NewBlogPost() {
     description: '',
     content: '',
     metaTitle: '',
-    metaDescription: ''
+    metaDescription: '',
+    postDate: ''
   });
   const fileInputRef = useRef(null);
 
@@ -243,6 +244,20 @@ export default function NewBlogPost() {
                   value={formData.metaDescription}
                   onChange={handleChange}
                   rows={3}
+                  className="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:border-blue-500 focus:outline-none"
+                />
+              </div>
+              <div>
+                <label htmlFor="postDate" className="block text-white mb-2">
+                  PostDate *
+                </label>
+                <input
+                  type="date"
+                  id="postDate"
+                  name="postDate"
+                  required
+                  value={formData.postDate}
+                  onChange={handleChange}
                   className="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:border-blue-500 focus:outline-none"
                 />
               </div>

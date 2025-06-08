@@ -37,6 +37,13 @@ const PostSchema = new mongoose.Schema({
     required: [true, 'Please provide a meta description'],
     maxlength: [160, 'Meta description cannot be more than 160 characters'],
   },
+  postedDate: {
+    type: Date,
+    default: Date.now,
+    required: [true, 'Please provide a posted date'],
+  }
+}, {
+  timestamps: true,
 });
 
 export default mongoose.models.Post || mongoose.model('Post', PostSchema); 
